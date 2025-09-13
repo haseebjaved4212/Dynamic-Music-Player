@@ -18,7 +18,7 @@ Let's break down the capabilities—what stands out to you as the most engaging?
 
 ## Preview
 
-- [ Music Player ]()
+- [ Music Player ](https://haseebjaved4212.github.io/Dynamic-Music-Player/)
 
 ## Technologies Used
 
