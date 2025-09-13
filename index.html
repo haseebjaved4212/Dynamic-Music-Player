@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Music Player</title>
+  <!-- Tailwind CSS for modern styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen p-4">
+
+  <!-- Music Player Container -->
+  <div class="music-player-container w-full max-w-md p-8 rounded-2xl flex flex-col items-center relative">
+
+    <!-- Header -->
+    <h1 class="text-3xl font-bold mb-4 text-purple-400 drop-shadow-lg">Music Player</h1>
+
+    <!-- Album Art -->
+    <div id="albumArtContainer" class="album-art-container mt-4 mb-8">
+      <img id="albumArt" src="https://placehold.co/250x250/2d3748/ffffff?text=Music" alt="Album Art" class="album-art">
+    </div>
+
+    <!-- Song Info -->
+    <div class="text-center mb-6">
+      <h2 id="songTitle" class="text-2xl font-bold mb-1 truncate w-64 md:w-80">Title</h2>
+      <h3 id="songArtist" class="text-lg text-gray-400 truncate w-64 md:w-80">Artist</h3>
+    </div>
+
+    <!-- Progress Bar -->
+    <div id="progressBarContainer" class="progress-bar-container w-full mb-4">
+      <div id="progressBar" class="progress-bar"></div>
+    </div>
+    <div class="flex justify-between w-full text-xs text-gray-400 mb-6">
+      <span id="currentTime">0:00</span>
+      <span id="duration">0:00</span>
+    </div>
+
+    <!-- Player Controls -->
+    <div class="flex items-center justify-center gap-8 mb-6">
+      <!-- Updated Previous Button SVG -->
+      <button id="prevBtn" class="control-btn p-3 rounded-full text-gray-300 hover:bg-gray-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M11 5l-7 7 7 7v-4.8l-3.2-3.2 3.2-3.2V5zm4-2v18h2V3h-2z" />
+        </svg>
+      </button>
+      <button id="playPauseBtn"
+        class="control-btn p-5 rounded-full bg-purple-500 hover:bg-purple-600 text-white shadow-xl">
+        <svg id="playIcon" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M8 5v14l11-7z" />
+        </svg>
+        <svg id="pauseIcon" xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 hidden" viewBox="0 0 24 24"
+          fill="currentColor">
+          <path d="M6 19h4V5H6zm8-14v14h4V5z" />
+        </svg>
+      </button>
+      <!-- Updated Next Button SVG -->
+      <button id="nextBtn" class="control-btn p-3 rounded-full text-gray-300 hover:bg-gray-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M13 19l7-7-7-7v4.8l3.2 3.2-3.2 3.2V19zm-4 2V3H7v18h2z" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Add Song & Playlist Buttons -->
+    <div class="flex justify-center gap-4 w-full">
+      <label for="addSongInput"
+        class="w-1/2 flex items-center justify-center p-3 rounded-xl bg-gray-700 hover:bg-gray-600 transition-all cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+        </svg>
+        <span title="Only Mp3 Files Allowed">Add Song</span>
+      </label>
+      <input type="file" id="addSongInput" accept="audio/*" class="hidden">
+      <button id="togglePlaylistBtn"
+        class="w-1/2 flex items-center justify-center p-3 rounded-xl bg-gray-700 hover:bg-gray-600 transition-all">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24"
+          stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <span>Playlist</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Playlist Modal -->
+  <div id="playlistModal"
+    class="playlist-modal fixed top-0 right-0 w-full md:w-1/3 min-h-screen bg-gray-800 border-l border-gray-700 p-6 flex flex-col">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-2xl font-bold text-purple-400">Playlist</h2>
+      <button id="closePlaylistBtn" class="p-2 text-gray-400 hover:text-white transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+          stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <div id="playlist" class="flex-grow overflow-y-auto space-y-2">
+      <!-- Playlist items will be added here dynamically -->
+    </div>
+  </div>
+<script src="script.js"></script>
+</body>
+
+</html>
